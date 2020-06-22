@@ -1,0 +1,21 @@
+---
+haproxy_use_ppa: true
+haproxy_global_stats:
+  sockets:
+    - listen: /run/haproxy/admin.sock
+  timeout: 30s
+haproxy_defaults_errorfile:
+  - code: 400
+    file: /etc/haproxy/errors/400.http
+  - code: 403
+    file: /etc/haproxy/errors/403.http
+  - code: 408
+    file: /etc/haproxy/errors/408.http
+  - code: 500
+    file: /etc/haproxy/errors/500.http
+  - code: 502
+    file: /etc/haproxy/errors/502.http
+  - code: 503
+    file: /etc/haproxy/errors/503.http
+  - code: 504
+    file: /etc/haproxy/errors/504.http
