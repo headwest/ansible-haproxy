@@ -1,4 +1,5 @@
 ---
+haproxy_path: /sbin/haproxy
 haproxy_use_ppa: true
 haproxy_global_stats:
   sockets:
