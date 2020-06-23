@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/Oefenweb/ansible-haproxy.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-haproxy)
 [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-haproxy-blue.svg)](https://galaxy.ansible.com/Oefenweb/haproxy)
 
-Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu systems.
+Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu
+and RHEL systems.
 
 #### Requirements
 
@@ -12,9 +13,7 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 #### Variables
 
 * `haproxy_version`: [default: `1.8`]: Version to install (e.g. `1.5`, `1.6`, `1.7`, `1.8`, `1.9`, `2.0`, `2.1`)
-
 * `haproxy_install`: [default: `[]`]: Additional packages to install (e.g. `socat`)
-
 * `haproxy_global_log`: [default: See `defaults/main.yml`]: Log declarations
 * `haproxy_global_log.{n}.address`: [required]: Indicates where to send the logs (e.g. `/dev/log`)
 * `haproxy_global_log.{n}.facility`: [required]: Must be one of the 24 standard syslog facilities (e.g. `local0`, `local1`)
@@ -51,7 +50,6 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_global_peers.{n}.peers.{n}.name`: [required]: Name of the host (recommended to be `hostname`) (e.g. `haproxy1`)
 * `haproxy_global_peers.{n}.peers.{n}.listen`: [required]: IP and port for peer to listen/connect to (e.g. `192.168.0.1:1024`)
 * `haproxy_global_raw_options`: [default: `[]`]: Additional arbitrary lines to insert in the section
-
 * `haproxy_defaults_log`: [default: `global`]: Enable per-instance logging of events and traffic. `global` should be used when the instance's logging parameters are the same as the global ones. This is the most common usage
 * `haproxy_defaults_logformat`: [optional]: Allows you to customize the logs in http mode and tcp mode (e.g. `'"%{+Q}o\ %t\ %s\ %{-Q}r"'`)
 * `haproxy_defaults_mode`: [default: `http`]: Set the running mode or protocol of the instance
@@ -66,14 +64,12 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_defaults_compression.{}.value`: [required]: The compression value, (e.g. if name = algo : one of this values `identity`, `gzip`, `deflate`, `raw-deflate` / if name = type : list of mime type separated by space for example `text/html text/plain text/css` / if name = `offload` value is empty)
 * `haproxy_default_server_params`: [optional]: Default server backend parameters passed to each backend/listen server.
 * `haproxy_default_raw_options`: [default: `[]`]: Additional arbitrary lines to insert in the section
-
 * `haproxy_ssl_map`: [default: `[]`]: SSL declarations
 * `haproxy_ssl_map.{n}.src`: The local path of the file to copy, can be absolute or relative (e.g. `../../../files/haproxy/etc/haproxy/ssl/star-example-com.pem`)
 * `haproxy_ssl_map.{n}.dest`: The remote path of the file to copy (e.g. `/etc/haproxy/ssl/star-example-com.pem`)
 * `haproxy_ssl_map.{n}.owner`: The name of the user that should own the file (optional, default `root`)
 * `haproxy_ssl_map.{n}.group`: The name of the group that should own the file (optional, default `root`)
 * `haproxy_ssl_map.{n}.mode`: The mode of the file, such as 0644 (optional, default `0640`)
-
 * `haproxy_listen`: [default: `[]`]: Listen declarations
 * `haproxy_listen.{n}.name`: [required]: The name of the section (e.g. `stats`)
 * `haproxy_listen.{n}.description`: [optional]: A description of the section (e.g. `Global statistics`)
@@ -187,7 +183,6 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_listen.{n}.errorfile.{n}.file`: [required]: A file containing the full HTTP response (e.g `/etc/haproxy/errors/400.http`)
 * `haproxy_listen.{n}.default_server_params`: [optional]: Default server params applied for each server for this particular listen entry.
 * `haproxy_listen.{n}.raw_options`: [default: `[]`]: Additional arbitrary lines to insert in the section
-
 * `haproxy_frontend`: [default: `[]`]: Front-end declarations
 * `haproxy_frontend.{n}.name`: [required]: The name of the section (e.g. `https`)
 * `haproxy_frontend.{n}.description`: [optional]: A description of the section (e.g. `Front-end for all HTTPS traffic`)
@@ -277,7 +272,6 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_frontend.{n}.errorfile.{n}.code`: [required]: The HTTP status code. Currently, HAProxy is capable of generating codes 200, 400, 403, 408, 500, 502, 503, and 504 (e.g. `400`)
 * `haproxy_frontend.{n}.errorfile.{n}.file`: [required]: A file containing the full HTTP response (e.g `/etc/haproxy/errors/400.http`)
 * `haproxy_frontend.{n}.raw_options`: [default: `[]`]: Additional arbitrary lines to insert in the section
-
 * `haproxy_backend`: [default: `[]`]: Back-end declarations
 * `haproxy_backend.{n}.name`: [required]: The name of the section (e.g. `webservers`)
 * `haproxy_backend.{n}.description`: [optional]: A description of the section (e.g. `Back-end with all (Apache) webservers`)
@@ -371,14 +365,11 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_backend.{n}.server_template.{n}.param`: [optional]: A list of parameters for this server template
 * `haproxy_backend.{n}.retry_on`: [optional, default `[]`]: Specify when to attempt to automatically retry a failed request. Provide a list of keywords or HTTP status codes, each representing a type of failure event on which an attempt to retry the request is desired. For details, see HAProxy documentation.
 * `haproxy_backend.{n}.retries`: [optional]: Number of retries to perform on a server after a connection failure
-
-
 * `haproxy_backend.{n}.errorfile`: [optional]: Errorfile declarations
 * `haproxy_backend.{n}.errorfile.{n}.code`: [required]: The HTTP status code. Currently, HAProxy is capable of generating codes 200, 400, 403, 408, 500, 502, 503, and 504 (e.g. `400`)
 * `haproxy_backend.{n}.errorfile.{n}.file`: [required]: A file containing the full HTTP response (e.g `/etc/haproxy/errors/400.http`)
 * `haproxy_backend.{n}.default_server_params`: [optional]: Default server params applied for each server for this particular backend entry.
 * `haproxy_backend.{n}.raw_options`: [default: `[]`]: Additional arbitrary lines to insert in the section
-
 * `haproxy_userlists`: [default: `[]`]: Userlist declarations
 * `haproxy_userlists.{n}.name`: [required]: The name of the userlist
 * `haproxy_userlists.{n}.users`: [required] Userlist users declarations
@@ -386,7 +377,6 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_userlists.{n}.users.{n}.password`: [optional] Password hash of this user. **One of `password` or `insecure_password` must be set**
 * `haproxy_userlists.{n}.users.{n}.insecure_password`: [optional] Plaintext password of this user. **One of `password` or `insecure_password` must be set**
 * `haproxy_userlists.{n}.users.{n}.groups`: [optional] List of groups to add the user to
-
 * `haproxy_resolvers`: [default: `[]`]: Resolvers (name servers) declarations
 * `haproxy_resolvers.{n}.name`: [required]: The name of the name server list
 * `haproxy_resolvers.{n}.nameservers`: [required] list of DNS servers
@@ -399,7 +389,6 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_resolvers.{n}.hold.{status}`: [optional]: hold directives in `<status>:<period>` format. Key must be one of (`nx`, `other`, `refused`, `timeout`, `valid`, `obsolete`). Value is interval between two successive name resolutions in HAProxy time format.
 * `haproxy_resolvers.{n}.timeout`: [optional]: Defines timeouts related to name resolution
 * `haproxy_resolvers.{n}.timeout.{event}`: [optional]: timeout directives in `<event>:<time>` format. Key must be one of (`resolve`, `retry`). Value is time related to the event in the HAProxy time format.
-
 * `haproxy_acl_files`: [default: `[]`]: ACL file declarations
 * `haproxy_acl_files.{n}.dest`: [required]: The remote path of the file (e.g. `/etc/haproxy/acl/api.map`)
 * `haproxy_acl_files.{n}.content`: [default: `[]`]: The content (lines) of the file (e.g. `['v1.0 be_alpha', 'v1.1 be_bravo']`)
