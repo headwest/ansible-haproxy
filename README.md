@@ -11,8 +11,6 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 
 #### Variables
 
-* `haproxy_use_ppa`: [default: `true`]: Whether or not to add the PPA (for installation)
-
 * `haproxy_version`: [default: `1.8`]: Version to install (e.g. `1.5`, `1.6`, `1.7`, `1.8`, `1.9`, `2.0`, `2.1`)
 
 * `haproxy_install`: [default: `[]`]: Additional packages to install (e.g. `socat`)
@@ -24,11 +22,6 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_global_log.{n}.minlevel`: [optional]: Can be specified to filter outgoing messages (e.g. `notice`)
 * `haproxy_global_log.{n}.length`: [optional]: Can be specified to adjust message length in log (e.g. `2048`)
 * `haproxy_global_chroot`: [optional]: Changes current directory to `<jail dir>` and performs a `chroot()` there before dropping privileges
-* `haproxy_global_stats`: [default: See `defaults/main.yml`]: Stats declarations
-* `haproxy_global_stats.sockets`:  [default: `[{listen: /run/haproxy/admin.sock }}"}]`]: Sockets declarations
-* `haproxy_global_stats.sockets.{n}.listen`:  [required]: Defines a listening address and/or ports (e.g. `/run/haproxy/admin.sock`)
-* `haproxy_global_stats.sockets.{n}.param`:  [optional]: A list of parameters common to this bind declarations (e.g. `['mode 660', 'level admin', 'process 1']`)
-* `haproxy_global_stats.timeout`:  [optional]: The default timeout on the stats socket
 * `haproxy_global_user`: [default: `haproxy`]: Similar to `"uid"` but uses the UID of user name `<user name>` from `/etc/passwd`
 * `haproxy_global_group`: [default: `haproxy`]: Similar to `"gid"` but uses the GID of group name `<group name>` from `/etc/group`.
 * `haproxy_global_daemon`: [default: `true`]: Makes the process fork into background. This is the recommended mode of operation
@@ -68,9 +61,6 @@ Set up (the latest version of) [HAProxy](http://www.haproxy.org/) in Ubuntu syst
 * `haproxy_defaults_timeout`: [default: See `defaults/main.yml`]: Timeout declarations
 * `haproxy_defaults_timeout.type`: [required]: The type (e.g. `connect`, `client`, `server`)
 * `haproxy_defaults_timeout.timeout`: [required]: The timeout (in in milliseconds by default, but can be in any other unit if the number is suffixed by the unit) (e.g. `5000`, `50000`)
-* `haproxy_defaults_errorfile`: [default: See `defaults/main.yml`]: Errorfile declarations
-* `haproxy_defaults_errorfile.code`: [required]: The HTTP status code. Currently, HAProxy is capable of generating codes 200, 400, 403, 408, 500, 502, 503, and 504 (e.g. `400`)
-* `haproxy_defaults_errorfile.file`: [required]: A file containing the full HTTP response (e.g `/etc/haproxy/errors/400.http`)
 * `haproxy_defaults_compression`: [optional]: Compression declarations
 * `haproxy_defaults_compression.{}.name`: [required]: The compression name (e.g. `algo`, `type`, `offload`)
 * `haproxy_defaults_compression.{}.value`: [required]: The compression value, (e.g. if name = algo : one of this values `identity`, `gzip`, `deflate`, `raw-deflate` / if name = type : list of mime type separated by space for example `text/html text/plain text/css` / if name = `offload` value is empty)
@@ -556,17 +546,6 @@ None
     haproxy_global_stats_sockets_default_param:
       - 'mode 660'
       - 'level admin'
-    haproxy_global_stats:
-      sockets:
-        - listen: /run/haproxy/admin-1.sock
-          param: "{{ haproxy_global_stats_sockets_default_param + ['process 1'] }}"
-        - listen: /run/haproxy/admin-2.sock
-          param: "{{ haproxy_global_stats_sockets_default_param + ['process 2'] }}"
-        - listen: /run/haproxy/admin-3.sock
-          param: "{{ haproxy_global_stats_sockets_default_param + ['process 3'] }}"
-        - listen: /run/haproxy/admin-4.sock
-          param: "{{ haproxy_global_stats_sockets_default_param + ['process 4'] }}"
-      timeout: 30s
 
     haproxy_global_nbproc: 4
 
