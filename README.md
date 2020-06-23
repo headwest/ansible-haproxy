@@ -8,7 +8,7 @@ and RHEL systems.
 
 #### Requirements
 
-* `python-apt`
+* `python-apt` (for Ubuntu hosts)
 
 #### Variables
 
