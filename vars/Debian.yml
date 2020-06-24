@@ -18,6 +18,6 @@ haproxy_global_stats:
   sockets:
     - listen: /run/haproxy/admin.sock
   timeout: 30s
-haproxy_path: /sbin/haproxy
+haproxy_path: /usr/sbin/haproxy
 haproxy_ppa: "ppa:vbernat/haproxy-{{ haproxy_version }}"
 haproxy_use_ppa: true
