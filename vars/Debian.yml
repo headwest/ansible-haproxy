@@ -1,5 +1,5 @@
 ---
-haproxy_defaults_errorfile:
+_haproxy_defaults_errorfile:
   - code: 400
     file: /etc/haproxy/errors/400.http
   - code: 403
@@ -14,10 +14,10 @@ haproxy_defaults_errorfile:
     file: /etc/haproxy/errors/503.http
   - code: 504
     file: /etc/haproxy/errors/504.http
-haproxy_global_stats:
+_haproxy_global_stats:
   sockets:
     - listen: /run/haproxy/admin.sock
   timeout: 30s
-haproxy_path: /usr/sbin/haproxy
-haproxy_ppa: "ppa:vbernat/haproxy-{{ haproxy_version }}"
-haproxy_use_ppa: true
+_haproxy_path: /usr/sbin/haproxy
+_haproxy_ppa: "ppa:vbernat/haproxy-{{ haproxy_version }}"
+_haproxy_use_ppa: true

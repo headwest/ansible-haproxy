@@ -1,5 +1,5 @@
 ---
-haproxy_defaults_errorfile:
+_haproxy_defaults_errorfile:
   - code: 400
     file: /usr/share/haproxy/400.http
   - code: 403
@@ -14,9 +14,9 @@ haproxy_defaults_errorfile:
     file: /usr/share/haproxy/503.http
   - code: 504
     file: /usr/share/haproxy/504.http
-haproxy_global_stats:
+_haproxy_global_stats:
   sockets:
     - listen: /var/lib/haproxy/stats
   timeout: 30s
-haproxy_path: /usr/sbin/haproxy
-haproxy_use_ppa: false
+_haproxy_path: /usr/sbin/haproxy
+_haproxy_use_ppa: false
