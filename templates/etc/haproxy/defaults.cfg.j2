@@ -23,8 +23,8 @@
   timeout {{ timeout.type }} {{ timeout.timeout }}
 {% endfor %}
 {% endif %}
-{% if haproxy_defaults_errorfile != false %}
-{% for errorfile in haproxy_defaults_errorfile %}
+{% if haproxy_defaults_errorfile_final != false %}
+{% for errorfile in haproxy_defaults_errorfile_final %}
   errorfile {{ errorfile.code }} {{ errorfile.file }}
 {% endfor %}
 {% endif %}

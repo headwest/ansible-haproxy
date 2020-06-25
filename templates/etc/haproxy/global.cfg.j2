@@ -7,13 +7,13 @@
 {% if haproxy_global_chroot is defined %}
   chroot {{ haproxy_global_chroot }}
 {% endif %}
-{% if haproxy_global_stats != false %}
-{% for socket in haproxy_global_stats.sockets | default([]) %}
+{% if haproxy_global_stats_final != false %}
+{% for socket in haproxy_global_stats_final.sockets | default([]) %}
   stats socket {{ socket.listen }}{% for param in socket.param | default([]) %} {{ param }}{% endfor %}
 
 {% endfor %}
-{% if haproxy_global_stats.timeout is defined %}
-  stats timeout {{ haproxy_global_stats.timeout }}
+{% if haproxy_global_stats_final.timeout is defined %}
+  stats timeout {{ haproxy_global_stats_final.timeout }}
 {% endif -%}
 {% endif %}
 {% if haproxy_global_user != false %}
