@@ -1,11 +1,11 @@
 # defaults file for haproxy
 ---
 haproxy_version: 1.8
-_haproxy_defaults_errorfile: '{{ haproxy_defaults_errorfile | default(_defaults_errorfile) }}'
-_haproxy_global_stats: '{{ haproxy_global_stats | default(_global_stats) }}'
-_haproxy_path: '{{ haproxy_path | default(_executable_path) }}'
-_haproxy_ppa: '{{ haproxy_ppa | default(_ppa_location) }}'
-_haproxy_use_ppa: '{{ haproxy_use_ppa | default(_use_ppa) }}'
+_haproxy_defaults_errorfile: '{{ haproxy_defaults_errorfile | default(haproxy_defaults_errorfiles) }}'
+_haproxy_global_stats: '{{ haproxy_global_stats | default(haproxy_global_statistics) }}'
+_haproxy_path: '{{ haproxy_path | default(haproxy_executable_path) }}'
+_haproxy_ppa: '{{ haproxy_ppa | default(haproxy_ppa_location) }}'
+_haproxy_use_ppa: '{{ haproxy_use_ppa | default(haproxy_use_ppa_packages) }}'
 
 haproxy_dependencies:
   - name: haproxy
