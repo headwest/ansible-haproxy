@@ -7,7 +7,7 @@
     owner: root
     group: root
     mode: 0640
-    validate: "{{ haproxy_path_final }} -f %s -c"
+    validate: "{{ _haproxy_path }} -f %s -c"
   notify: restart haproxy
   tags:
     - haproxy-configuration-update-file
